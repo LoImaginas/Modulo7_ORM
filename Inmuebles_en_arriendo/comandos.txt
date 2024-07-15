@@ -1,0 +1,271 @@
+Verificacion de Postgres(TERMINAL ZSH)
+
+creacion y activacion de entorno virtual
+
+1-	python3 -m venv vArriendos
+2-	source vArriendos/bin/activate
+
+ver las dependencias e instalaras las necesarias
+
+3- pip3 install Django  (5.0.6)
+
+instalar driver base de datos en nuestro entorno virtual para usar postgres
+4- pip3 install psycopg2     #postgres
+
+5- pip3 install --upgrade pip 
+
+
+creacion de Proyecto
+
+7-	Django-admin startproject inmuebles_en_arriendo
+8-	cd inmuebles_en_arriendo
+
+agregar app al proyecto
+
+3- python3 manage.py startapp Arriendos_app
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+4-
+    INSTALLED_APPS = [
+    ...
+    'Arriendos_app',
+    ...
+]
+
+
+
+BASE DE DATO: (TERMINAL BASH)
+
+psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+password: Admin1234
+
+CREAR BASE DE DATO
+
+CREATE DATABASE "inmuebles_en_arriendo";  
+
+"""CREAR TABLA
+CREATE TABLE adltest (
+    campo1 CHAR(100),
+    valor1 INTEGER
+);
+
+\d adltest"""""
+
+\l    lista bases de datos creadas 
+\c inmuebles_en_arriendo     conectarse a la base de datos 
+\q   salir de la base de datos
+
+
+CONFIGURAR BASE DE datos
+settings.py
+
+(cuando es postgres)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'inmuebles_en_arriendo',
+        'USER': 'postgres',
+        'PASSWORD': 'Admin1234',
+        'HOST': 'localhost',
+        'PORT': '5432',  # o dejar vacío para SQLite
+    }
+}
+
+(cuando es sqlite)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR /'nombre_proyecto.sqlite3',
+    }
+
+
+    (TERMINAL ZSH)
+
+
+DEFINIR MODELOS 
+python
+from django.db import models
+
+class TipoUsuario(models.Model):
+    nombre = models.CharField(max_length=100)
+
+class Usuario(models.Model):
+    nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
+    rut = models.CharField(max_length=12)
+    direccion = models.CharField(max_length=200)
+    telefono = models.CharField(max_length=15)
+    email = models.EmailField()
+    tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE)
+
+class Inmueble(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    m2_construidos = models.IntegerField()
+    m2_terreno = models.IntegerField()
+    estacionamientos = models.IntegerField()
+    habitaciones = models.IntegerField()
+    banos = models.IntegerField()
+    direccion = models.CharField(max_length=200)
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE)
+    tipo_inmueble = models.ForeignKey(TipoInmueble, on_delete=models.CASCADE)
+    precio_arriendo = models.DecimalField(max_digits=10, decimal_places=2)
+
+class InmuebleUsuario(models.Model):
+    inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+
+class Comuna(models.Model):
+    nombre = models.CharField(max_length=100)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)
+
+class Region(models.Model):
+    nombre = models.CharField(max_length=100)
+
+class TipoInmueble(models.Model):
+    nombre = models.CharField(max_length=100)
+
+
+crear SERVICE.py
+
+from .models import Usuario, Inmueble
+
+def crear_usuario(nombre, apellido, rut, direccion, telefono, email, tipo_usuario):
+    usuario = Usuario.objects.create(
+        nombre=nombre, 
+        apellido=apellido, 
+        rut=rut, 
+        direccion=direccion, 
+        telefono=telefono, 
+        email=email, 
+        tipo_usuario=tipo_usuario
+    )
+    return usuario
+
+def obtener_usuarios():
+    usuarios = Usuario.objects.all()
+    return usuarios
+
+def actualizar_usuario(usuario_id, nombre, apellido, rut, direccion, telefono, email, tipo_usuario):
+    usuario = Usuario.objects.get(id=usuario_id)
+    usuario.nombre = nombre
+    usuario.apellido = apellido
+    usuario.rut = rut
+    usuario.direccion = direccion
+    usuario.telefono = telefono
+    usuario.email = email
+    usuario.tipo_usuario = tipo_usuario
+    usuario.save()
+    return usuario
+
+def borrar_usuario(usuario_id):
+    usuario = Usuario.objects.get(id=usuario_id)
+    usuario.delete()
+
+def crear_inmueble(nombre, descripcion, m2_construidos, m2_terreno, estacionamientos, habitaciones, banos, direccion, comuna, tipo_inmueble, precio_arriendo):
+    inmueble = Inmueble.objects.create(
+        nombre=nombre,
+        descripcion=descripcion,
+        m2_construidos=m2_construidos,
+        m2_terreno=m2_terreno,
+        estacionamientos=estacionamientos,
+        habitaciones=habitaciones,
+        banos=banos,
+        direccion=direccion,
+        comuna=comuna,
+        tipo_inmueble=tipo_inmueble,
+        precio_arriendo=precio_arriendo
+    )
+    return inmueble
+
+def obtener_inmuebles():
+    inmuebles = Inmueble.objects.all()
+    return inmuebles
+
+
+def actualizar_inmueble(inmueble_id, nombre, descripcion, m2_construidos, m2_terreno, estacionamientos, habitaciones, banos, direccion, comuna, tipo_inmueble, precio_arriendo):
+    inmueble = Inmueble.objects.get(id=inmueble_id)
+    inmueble.nombre = nombre
+    inmueble.descripcion = descripcion
+    inmueble.m2_construidos = m2_construidos
+    inmueble.m2_terreno = m2_terreno
+    inmueble.estacionamientos = estacionamientos
+    inmueble.habitaciones = habitaciones
+    inmueble.banos = banos
+    inmueble.direccion = direccion
+    inmueble.comuna = comuna
+    inmueble.tipo_inmueble = tipo_inmueble
+    inmueble.precio_arriendo = precio_arriendo
+    inmueble.save()
+    return inmueble
+
+
+def borrar_inmueble(inmueble_id):
+    inmueble = Inmueble.objects.get(id=inmueble_id)
+    inmueble.delete()
+
+CREAR LAS MIGRACIONES
+	
+6-	python3 manage.py makemigrations
+7-	python3 manage.py migrate
+
+
+VOLVER AL TERMINAL DE BASE DE DATO BASH 
+
+ revisar en base de datos (terminal bash)
+ \d     verificar el modelo creado en la lista
+ \d 
+salir de base de datos
+\q 
+
+
+
+python manage.py shell
+
+(InteractiveConsole)
+>>> 
+from Arriendos_app.models import TipoUsuario, Usuario
+from Arriendos_app.services import crear_usuario
+
+arrendador, created_arrendador = TipoUsuario.objects.get_or_create(nombre="Arrendador")
+arrendatario, created_arrendatario = TipoUsuario.objects.get_or_create(nombre="Arrendatario")
+
+
+usuario1 = crear_usuario(
+    nombre="Carlos",
+    apellido="Villagra",
+    rut="16691518-9",
+    direccion="132 Fray Jorge",
+    telefono="954435672",
+    email="carlos@carlos.com",
+    tipo_usuario=arrendador
+)
+
+
+usuario2 = crear_usuario(
+    nombre="Ana",
+    apellido="Peso",
+    rut="15236987-1",
+    direccion="251 Avenida Altura",
+    telefono="987654321",
+    email="ana@ana.com",
+    tipo_usuario=arrendatario
+)
+
+print(usuario1)
+print(usuario2)
+
+Salir de la shell 
+exit()
+
+Pip3 freeze > requirements–vArriendos.txt
+
+zip -r proyecto-inmuebles_en_arriendo-Lolett-Llanquinao.zip INMUEBLES_EN_ARRIENDO
+
+salir de la base de datos
+\q
+
+salir del entorno virtual
+deactivate 
+
