@@ -1,4 +1,4 @@
-from .models import Usuario, Inmueble
+from .models import Usuario, Inmueble, Tipo_usuario, Region, Comuna, Tipo_inmueble
 
 def crear_usuario(nombre, apellido, rut, direccion, telefono, email, tipo_usuario):
     usuario = Usuario.objects.create(
@@ -73,3 +73,30 @@ def actualizar_inmueble(inmueble_id, nombre, descripcion, m2_construidos, m2_ter
 def borrar_inmueble(inmueble_id):
     inmueble = Inmueble.objects.get(id=inmueble_id)
     inmueble.delete()
+    
+    
+def crear_tipo_usuario(nombre):
+    tipo_usuario = Tipo_usuario.objects.create(
+        nombre=nombre,
+    )
+    return tipo_usuario
+
+def crear_region(nombre):
+    region = Region.objects.create(
+        nombre=nombre,
+    )
+    return region
+
+def crear_comuna(nombre, region_id):
+    region = Region.objects.get(id=region_id)
+    comuna = Comuna.objects.create(
+        nombre=nombre,
+        region=region,
+        )
+    return comuna
+
+def crear_tipo_inmueble(nombre):
+    tipo_inmueble = Tipo_inmueble.objects.create(
+        nombre=nombre,
+    )
+    return tipo_inmueble
