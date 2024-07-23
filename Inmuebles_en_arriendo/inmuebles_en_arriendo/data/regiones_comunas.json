@@ -1,0 +1,42 @@
+[
+
+    {"model": "Arriendos_app.Region", "pk": 1, "fields": {"nombre": "Región de Arica y Parinacota"}},
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Arica", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Camarones", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Putre", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 4, "fields": {"nombre": "General Lagos", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 5, "fields": {"nombre": "Alto Hospicio", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 6, "fields": {"nombre": "Iquique", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Huara", "region": 1}},
+ 
+    {"model": "Arriendos_app.Region", "pk": 2, "fields": {"nombre": "Región de Tarapaca"}},
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Camina", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Colchane", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Pica", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 4, "fields": {"nombre": "Pozo Almonte", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 5, "fields": {"nombre": "Tocopilla", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 6, "fields": {"nombre": "Maria Elena", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Calama", "region": 2}},
+    {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Ollague", "region": 2}},
+
+    {"model": "Arriendos_app.Region", "pk": 3, "fields": {"nombre": "Región de Antofagasta"}},
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "San Pedro de Atacama", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Antofagasta", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Mejillones", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 4, "fields": {"nombre": "Sierra Gorda", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 5, "fields": {"nombre": "Taltal", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 6, "fields": {"nombre": "Chañaral", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Diego de Almagro", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Copiapo", "region": 3}},
+    {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Caldera", "region": 3}},
+
+   
+    {"model": "Arriendos_app.Region", "pk": 1, "fields": {"nombre": "Región Metropolitana"}},
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Santiago", "region": 1}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Providencia", "region": 1}},
+
+
+    {"model": "Arriendos_app.Region", "pk": 2, "fields": {"nombre": "Valparaíso"}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Viña del Mar", "region": 2}}
+    
+]
