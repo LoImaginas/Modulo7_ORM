@@ -1,4 +1,5 @@
 [
     {"model": "Arriendos_app.TipoInmueble", "pk": 1, "fields": {"nombre": "Casa"}},
-    {"model": "Arriendos_app.TipoInmueble", "pk": 2, "fields": {"nombre": "Departamento"}}
+    {"model": "Arriendos_app.TipoInmueble", "pk": 2, "fields": {"nombre": "Departamento"}},
+    {"model": "Arriendos_app.TipoInmueble", "pk": 3, "fields": {"nombre": "Parcela"}}
 ]

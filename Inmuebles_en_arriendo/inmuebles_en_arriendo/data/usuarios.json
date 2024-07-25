@@ -1,4 +1,6 @@
 [
-    {"model": "auth.User", "pk": 1, "fields": {"username": "user1", "password": "pbkdf2_sha256$216000$...$...", "email": "user1@example.com"}},
-    {"model": "auth.User", "pk": 2, "fields": {"username": "user2", "password": "pbkdf2_sha256$216000$...$...", "email": "user2@example.com"}}
+    {"model": "auth.User", "pk": 1, "fields": {"username": "juanperez", "password": "juanito20$$", "email": "juanperez@example.com", "first_name": "Juan", "last_name": "Perez"}},
+    {"model": "auth.User", "pk": 2, "fields": {"username": "mariafernandez", "password": "marita12345##", "email": "mariafernandez@example.com", "first_name": "Maria", "last_name": "Fernandez"}},
+    {"model": "auth.User", "pk": 3, "fields": {"username": "andreatorres", "password": "andre2024%%", "email": "andreatorres@example.com", "first_name": "Andrea", "last_name": "Torres"}}
+
 ]

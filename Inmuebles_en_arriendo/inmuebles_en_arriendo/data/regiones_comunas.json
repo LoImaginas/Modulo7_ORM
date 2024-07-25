@@ -5,8 +5,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Camarones", "region": 15}},
     {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Putre", "region": 15}},
     {"model": "Arriendos_app.Comuna", "pk": 4, "fields": {"nombre": "General Lagos", "region": 15}},
-
-
     {"model": "Arriendos_app.Region", "pk": 1, "fields": {"nombre": "Región de Tarapaca"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Alto Hospicio", "region": 1}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Iquique", "region": 1}},
@@ -15,8 +13,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 5, "fields": {"nombre": "Colchane", "region": 1}},
     {"model": "Arriendos_app.Comuna", "pk": 6, "fields": {"nombre": "Pica", "region": 1}},
     {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Pozo Almonte", "region": 1}},
-
-
     {"model": "Arriendos_app.Region", "pk": 2, "fields": {"nombre": "Región de Antofagasta"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Tocopilla", "region": 2}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Maria Elena", "region": 2}},
@@ -27,7 +23,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Mejillones", "region": 2}},
     {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Sierra Gorda", "region": 2}},   
     {"model": "Arriendos_app.Comuna", "pk": 9, "fields": {"nombre": "Taltal", "region": 2}},
-
     {"model": "Arriendos_app.Region", "pk": 3, "fields": {"nombre": "Región de Atacama"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Chañaral", "region": 3}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Diego de Almagro", "region": 3}},
@@ -38,7 +33,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Freirina", "region": 3}},
     {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Huasco", "region": 3}},
     {"model": "Arriendos_app.Comuna", "pk": 9, "fields": {"nombre": "Alto del Carmen", "region": 3}},
-
     {"model": "Arriendos_app.Region", "pk": 4, "fields": {"nombre": "Región de Coquimbo"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "La Serena", "region": 4}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "La Higuera", "region": 4}},
@@ -55,7 +49,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 13, "fields": {"nombre": "Salamanca", "region": 4}},
     {"model": "Arriendos_app.Comuna", "pk": 14, "fields": {"nombre": "Los Vilos", "region": 4}},
     {"model": "Arriendos_app.Comuna", "pk": 15, "fields": {"nombre": "Canela", "region": 4}},
-
     {"model": "Arriendos_app.Region", "pk": 5, "fields": {"nombre": "Región de Valparaiso"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "La Ligua", "region": 5}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Petorca", "region": 5}},
@@ -95,9 +88,7 @@
     {"model": "Arriendos_app.Comuna", "pk": 36, "fields": {"nombre": "Isla de Pascua", "region": 5}},
     {"model": "Arriendos_app.Comuna", "pk": 37, "fields": {"nombre": "Puchuncavi", "region": 5}},
     {"model": "Arriendos_app.Comuna", "pk": 38, "fields": {"nombre": "Quilpue", "region": 5}},
-  
-
-    {"model": "Arriendos_app.Region", "pk": 6, "fields": {"nombre": "Región del Libertador General Bernarod O´higgins"}},
+    {"model": "Arriendos_app.Region", "pk": 6, "fields": {"nombre": "Región del Libertador General Bernardo Ohiggins"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Rancagua", "region": 6}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Graneros", "region": 6}},
     {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Mostazal", "region": 6}},
@@ -131,8 +122,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 31, "fields": {"nombre": "La Estrella", "region": 6}},
     {"model": "Arriendos_app.Comuna", "pk": 32, "fields": {"nombre": "Marchihue", "region": 6}},
     {"model": "Arriendos_app.Comuna", "pk": 33, "fields": {"nombre": "Paredones", "region": 6}},
-
-
     {"model": "Arriendos_app.Region", "pk": 7, "fields": {"nombre": "Región del Maule"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Curico", "region": 7}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Teno", "region": 7}},
@@ -164,7 +153,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 28, "fields": {"nombre": "San Javier", "region": 7}},
     {"model": "Arriendos_app.Comuna", "pk": 29, "fields": {"nombre": "Villa Alegre", "region": 7}},
     {"model": "Arriendos_app.Comuna", "pk": 30, "fields": {"nombre": "Yerbas Buenas", "region": 7}},
-
     {"model": "Arriendos_app.Region", "pk": 16, "fields": {"nombre": "Región del Ñuble"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Bulnes", "region": 16}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Chillan", "region": 16}},
@@ -187,7 +175,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 19, "fields": {"nombre": "San Nicolas", "region": 16}},
     {"model": "Arriendos_app.Comuna", "pk": 20, "fields": {"nombre": "Treguaco", "region": 16}},
     {"model": "Arriendos_app.Comuna", "pk": 21, "fields": {"nombre": "Yungay", "region": 16}},
-
     {"model": "Arriendos_app.Region", "pk": 8, "fields": {"nombre": "Región del Biobio"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Alto Biobio", "region": 8}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Antuco", "region": 8}},
@@ -222,8 +209,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 31, "fields": {"nombre": "Tome", "region": 8}},
     {"model": "Arriendos_app.Comuna", "pk": 32, "fields": {"nombre": "Tucapel", "region": 8}},
     {"model": "Arriendos_app.Comuna", "pk": 33, "fields": {"nombre": "Yumbel", "region": 8}},
-
-    
     {"model": "Arriendos_app.Region", "pk": 9, "fields": {"nombre": "Región de La Araucania"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Angol", "region": 9}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Carahue", "region": 9}},
@@ -257,8 +242,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 30, "fields": {"nombre": "Victoria", "region": 9}},
     {"model": "Arriendos_app.Comuna", "pk": 31, "fields": {"nombre": "Vilcun", "region": 9}},
     {"model": "Arriendos_app.Comuna", "pk": 32, "fields": {"nombre": "Villarrica", "region": 9}},
-
-
     {"model": "Arriendos_app.Region", "pk": 14, "fields": {"nombre": "Región de Los Rios"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Corral", "region": 14}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Futrono", "region": 14}},
@@ -272,50 +255,60 @@
     {"model": "Arriendos_app.Comuna", "pk": 10, "fields": {"nombre": "Panguipulli", "region": 14}},
     {"model": "Arriendos_app.Comuna", "pk": 11, "fields": {"nombre": "Rio Bueno", "region": 14}},
     {"model": "Arriendos_app.Comuna", "pk": 12, "fields": {"nombre": "Valdivia", "region": 14}},
-
     {"model": "Arriendos_app.Region", "pk": 10, "fields": {"nombre": "Región de Los Lagos"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Ancud", "region": 10}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Calbuco", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "C", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 4, "fields": {"nombre": "Collipulli", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 5, "fields": {"nombre": "Cunco", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 6, "fields": {"nombre": "Curacautin", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Curarrehue", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Ercilla", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 9, "fields": {"nombre": "Freire", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 10, "fields": {"nombre": "Galvarino", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 11, "fields": {"nombre": "Gorbea", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 12, "fields": {"nombre": "Lautaro", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 13, "fields": {"nombre": "Loncoche", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 14, "fields": {"nombre": "Lonquimay", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 15, "fields": {"nombre": "Los Sauces", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 16, "fields": {"nombre": "Lumaco", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 17, "fields": {"nombre": "Melipeuco", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 18, "fields": {"nombre": "Nueva Imperial", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 19, "fields": {"nombre": "Padre las Casas", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 20, "fields": {"nombre": "Perquenco", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 21, "fields": {"nombre": "Pitrufquen", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 22, "fields": {"nombre": "Pucon", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 23, "fields": {"nombre": "Puren", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 24, "fields": {"nombre": "Renaico", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 25, "fields": {"nombre": "Saavedra", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 26, "fields": {"nombre": "Temuco", "region": 10}},
-    {"model": "Arriendos_app.Comuna", "pk": 27, "fields": {"nombre": "Teodoro Schmidt", "region": 10}},
-
-
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Castro", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 4, "fields": {"nombre": "Chaiten", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 5, "fields": {"nombre": "Chonchi", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 6, "fields": {"nombre": "Cochamo", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 7, "fields": {"nombre": "Curaco de Velez", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 8, "fields": {"nombre": "Dalcahue", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 9, "fields": {"nombre": "Fresia", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 10, "fields": {"nombre": "Frutillar", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 11, "fields": {"nombre": "Futalelfu", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 12, "fields": {"nombre": "Hualaihue", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 13, "fields": {"nombre": "Llanquihue", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 14, "fields": {"nombre": "Los Muermos", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 15, "fields": {"nombre": "Maulin", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 16, "fields": {"nombre": "Osorno", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 17, "fields": {"nombre": "Palena", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 18, "fields": {"nombre": "Puerto Montt", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 19, "fields": {"nombre": "Puerto Octay", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 20, "fields": {"nombre": "Puerto Varas", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 21, "fields": {"nombre": "Puqueldon", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 22, "fields": {"nombre": "Purranque", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 23, "fields": {"nombre": "Puyehue", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 24, "fields": {"nombre": "Queilen", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 25, "fields": {"nombre": "Quellon", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 26, "fields": {"nombre": "Quemchi", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 27, "fields": {"nombre": "Quinchao", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 25, "fields": {"nombre": "Rio Negro", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 26, "fields": {"nombre": "San Juan de la Costa", "region": 10}},
+    {"model": "Arriendos_app.Comuna", "pk": 27, "fields": {"nombre": "San Pablo", "region": 10}},
     {"model": "Arriendos_app.Region", "pk": 11, "fields": {"nombre": "Región Aysen del Gral. Carlos Ibañez del Campo"}},
-    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "", "region": 11}},
-    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "", "region": 11}},
-    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "", "region": 11}},
-
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Aysen", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Chile Chico", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Cisnes", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Cochrane", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Coyhaique", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Guaiteca", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Lago Verde", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "OHiggins", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Rio Ibañez", "region": 11}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Tortel", "region": 11}},
     {"model": "Arriendos_app.Region", "pk": 12, "fields": {"nombre": "Región de Magallanes y de la Antartica Chilena"}},
-    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "", "region": 12}},
-    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "", "region": 12}},
-    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "", "region": 12}},
-
-
-
-
+    {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Antartica", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Cabo de Hornos", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Laguna Blanca", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Natales", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Porvenir", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Primavera", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Punta Arenas", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Rio Verde", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "San Gregorio", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Timaukel", "region": 12}},
+    {"model": "Arriendos_app.Comuna", "pk": 3, "fields": {"nombre": "Torres del Paine", "region": 12}},
     {"model": "Arriendos_app.Region", "pk": 13, "fields": {"nombre": "Región Metropolitana"}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Alhue", "region": 13}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Buin", "region": 13}},
@@ -369,11 +362,6 @@
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Talagante", "region": 13}},
     {"model": "Arriendos_app.Comuna", "pk": 1, "fields": {"nombre": "Tiltil", "region": 13}},
     {"model": "Arriendos_app.Comuna", "pk": 2, "fields": {"nombre": "Vitacura", "region": 13}}
-
-
-
-
-
 
 
 ]
