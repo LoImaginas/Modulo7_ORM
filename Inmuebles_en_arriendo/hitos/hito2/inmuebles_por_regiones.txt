@@ -1,0 +1,38 @@
+Región: Región de Arica y Parinacota
+
+Región: Región de Tarapaca
+
+Región: Región de Antofagasta
+
+Región: Región de Atacama
+
+Región: Región de Coquimbo
+
+Región: Región de Valparaiso
+
+Región: Región del Libertador General Bernardo Ohiggins
+
+Región: Región del Maule
+
+Región: Región del Ñuble
+
+Región: Región del Biobio
+
+Región: Región de La Araucania
+
+Región: Región de Los Rios
+
+Región: Región de Los Lagos
+
+Región: Región Aysen del Gral. Carlos Ibañez del Campo
+
+Región: Región de Magallanes y de la Antartica Chilena
+  Nombre: Departamento en Viña
+  Descripción: Departamento con vista al mar
+
+Región: Región Metropolitana
+  Nombre: Casa en Santiago
+  Descripción: Amplia casa en Santiago
+  Nombre: Parcela en el Campo
+  Descripción: Hermosa parcela en el campo con mucho espacio verde
+

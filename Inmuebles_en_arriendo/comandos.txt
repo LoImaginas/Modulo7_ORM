@@ -259,9 +259,17 @@ print(usuario2)
 Salir de la shell 
 exit()
 
-Pip3 freeze > requirements–vArriendos.txt
+CARGAR ARCHIVOS JSON
+python3 manage.py loaddata data/inmuebles.json data/regiones_comunas.json data/tipos_inmuebles.json data/usuarios.json
 
-zip -r proyecto-inmuebles_en_arriendo-Lolett-Llanquinao.zip INMUEBLES_EN_ARRIENDO
+CONSULTAS.py
+
+python3 consultas.py 
+
+
+python3 manage.py runserver
+
+Pip3 freeze > requirements–vArriendos.txt
 
 salir de la base de datos
 \q
@@ -269,3 +277,18 @@ salir de la base de datos
 salir del entorno virtual
 deactivate 
 
+
+
+
+zip -r proyecto-inmuebles_en_arriendo-Lolett-Llanquinao.zip hitos/hito1
+zip -r proyecto-inmuebles_en_arriendo2-Lolett-Llanquinao.zip hitos/hito2
+zip -r proyecto-inmuebles_en_arriendo3-Lolett-Llanquinao.zip hitos/hito3
+zip -r proyecto-inmuebles_en_arriendo4-Lolett-Llanquinao.zip hitos/hito4
+
+git add proyecto-inmuebles_en_arriendo-Lolett-Llanquinao.zip
+git commit -m "Agregar archivo ZIP hito 1 del proyecto"
+git push -u origin main
+
+git add proyecto-inmuebles_en_arriendo2-Lolett-Llanquinao.zip
+git commit -m "Agregar archivo ZIP hito 2 del proyecto"
+git push -u origin main

@@ -1,0 +1,82 @@
+Comuna: Algarrobo
+
+Comuna: Santo Domingo
+
+Comuna: Isla de Pascua
+
+Comuna: Puchuncavi
+
+Comuna: Quilpue
+
+Comuna: Yumbel
+
+Comuna: Tolten
+
+Comuna: Traiguen
+
+Comuna: Victoria
+
+Comuna: Vilcun
+
+Comuna: Villarrica
+
+Comuna: Chaiten
+
+Comuna: Chonchi
+
+Comuna: Cochamo
+
+Comuna: Curaco de Velez
+
+Comuna: Dalcahue
+
+Comuna: Fresia
+
+Comuna: Frutillar
+
+Comuna: Futalelfu
+
+Comuna: Hualaihue
+
+Comuna: Llanquihue
+
+Comuna: Los Muermos
+
+Comuna: Maulin
+
+Comuna: Osorno
+
+Comuna: Palena
+
+Comuna: Puerto Montt
+
+Comuna: Puerto Octay
+
+Comuna: Puerto Varas
+
+Comuna: Puqueldon
+
+Comuna: Purranque
+
+Comuna: Puyehue
+
+Comuna: Queilen
+
+Comuna: Rio Negro
+
+Comuna: San Juan de la Costa
+
+Comuna: San Pablo
+
+Comuna: Torres del Paine
+  Nombre: Departamento en Viña
+  Descripción: Departamento con vista al mar
+
+Comuna: Tiltil
+  Nombre: Casa en Santiago
+  Descripción: Amplia casa en Santiago
+
+Comuna: Vitacura
+  Nombre: Parcela en el Campo
+  Descripción: Hermosa parcela en el campo con mucho espacio verde
+
