@@ -57,6 +57,6 @@ class InmuebleUsuario(models.Model):
     inmueble = models.ForeignKey(Inmueble, on_delete=models.CASCADE)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     
-    def __str__(self):
+    def __str__(self):           
         return self.nombre
 

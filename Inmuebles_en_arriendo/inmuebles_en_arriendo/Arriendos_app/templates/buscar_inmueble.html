@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Inmuebles</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Buscar Inmuebles</h1>
+    <ul>
+        {% for inmueble in inmuebles %}
+            <li>{{ inmueble.nombre }} - {{ inmueble.direccion }} - {{ inmueble.descripcion }} - {{ inmueble.precio_arriendo }}</li>
+        {% empty %}
+            <li>No hay inmuebles disponibles.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'perfil' %}">Volver al perfil</a>
+</body>
+</html>
