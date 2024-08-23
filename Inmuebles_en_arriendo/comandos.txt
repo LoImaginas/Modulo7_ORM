@@ -298,6 +298,8 @@ git add proyecto-inmuebles_en_arriendo3-Lolett-Llanquinao.zip
 git commit -m "Agregar archivo ZIP hito 3 del proyecto"
 git push -u origin main
 
-git add proyecto-inmuebles_en_arriendo4-Lolett-Llanquinao.zip
+git add /hito4
 git commit -m "Agregar archivo ZIP hito 4 del proyecto"
 git push -u origin main
+
+git commit -m "Agregar hito 4 del proyecto"
