@@ -8,15 +8,12 @@ deactivate () {
         export PATH
         unset _OLD_VIRTUAL_PATH
     fi
+
     if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ] ; then
         PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}"
         export PYTHONHOME
         unset _OLD_VIRTUAL_PYTHONHOME
     fi
-
-    # Call hash to forget past commands. Without forgetting
-    # past commands the $PATH changes we made may not be respected
-    hash -r 2> /dev/null
 
     if [ -n "${_OLD_VIRTUAL_PS1:-}" ] ; then
         PS1="${_OLD_VIRTUAL_PS1:-}"
@@ -26,22 +23,20 @@ deactivate () {
 
     unset VIRTUAL_ENV
     unset VIRTUAL_ENV_PROMPT
+
     if [ ! "${1:-}" = "nondestructive" ] ; then
-    # Self destruct!
+        # Self destruct!
         unset -f deactivate
     fi
 }
 
-# unset irrelevant variables
+# Unset irrelevant variables
 deactivate nondestructive
 
-# on Windows, a path can contain colons and backslashes and has to be converted:
+# On Windows, adjust the path format if necessary
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
-    # transform D:\path\to\venv to /d/path/to/venv on MSYS
-    # and to /cygdrive/d/path/to/venv on Cygwin
     export VIRTUAL_ENV=$(cygpath "/Users/crisylolett/Talento-digital/0044-1/MODULO7_DJANGO_ORM/vdemololett")
 else
-    # use the path as-is
     export VIRTUAL_ENV="/Users/crisylolett/Talento-digital/0044-1/MODULO7_DJANGO_ORM/vdemololett"
 fi
 
@@ -49,22 +44,20 @@ _OLD_VIRTUAL_PATH="$PATH"
 PATH="$VIRTUAL_ENV/bin:$PATH"
 export PATH
 
-# unset PYTHONHOME if set
-# this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
-# could use `if (set -u; : $PYTHONHOME) ;` in bash
+# Unset PYTHONHOME if set
 if [ -n "${PYTHONHOME:-}" ] ; then
     _OLD_VIRTUAL_PYTHONHOME="${PYTHONHOME:-}"
     unset PYTHONHOME
 fi
 
+# Set VIRTUAL_ENV_PROMPT if not disabled
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
     PS1="(vdemololett) ${PS1:-}"
     export PS1
-    VIRTUAL_ENV_PROMPT="(vdemololett) "
+    VIRTUAL_ENV_PROMPT="(vdemololett)"
     export VIRTUAL_ENV_PROMPT
 fi
 
-# Call hash to forget past commands. Without forgetting
-# past commands the $PATH changes we made may not be respected
+# Call hash to forget past commands
 hash -r 2> /dev/null

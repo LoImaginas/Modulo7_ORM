@@ -1,0 +1,117 @@
+Verificacion de Postgres(TERMINAL ZSH)
+
+creacion y activacion de entorno virtual
+
+1-	python3 -m venv vEjercicio
+2-	source vEjercicio/bin/activate
+
+ver las dependencias e instalaras las necesarias
+
+3- pip3 install Django  (5.0.6)
+
+instalar driver base de datos en nuestro entorno virtual
+4- pip3 install psycopg2     #postgres
+
+5- pip3 install --upgrade pip 
+
+   """7- pip3 list 
+   8- Pip3 freeze > requirements– vSistema_base.txt
+   9- python3 - version   (salir con ctrl + d) (version3.12.2) """
+
+
+creacion de Proyecto
+
+6-	Django-admin startproject proyecto_capitulo_1
+7-	cd proyecto_capitulo_1
+
+BASE DE DATO: (TERMINAL BASH)
+
+psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+password: Admin1234
+
+CREAR BASE DE DATO
+
+CREATE DATABASE proyecto_capitulo_1;
+
+\l    lista bases de datos creadas 
+\c proyecto_capitulo_1      conectarse a la base de datos 
+\q   salir de la base de datos
+
+
+Vincular en "settings.py"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'proyecto_capitulo_1',
+        'USER': 'postgres',
+        'PASSWORD': 'Admin1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+
+NUEVAMENTE EN TERMINAL ZSH
+
+agregar app al proyecto
+
+3- python3 manage.py startapp testadl
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+4-
+    INSTALLED_APPS = [
+    ...
+    'testadl',
+    ...
+]
+
+luego de agregar el modelo en models.py
+
+from django.db import models
+
+class Persona(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=50)
+    apellido = models.CharField(max_length=50)
+    correo = models.EmailField(max_length=50)
+
+"""5- agregar al admin.py 
+
+from .models import Pelicula
+admin.site.register(Pelicula)"""
+
+
+	
+6-	python3 manage.py makemigrations
+7-	python3 manage.py migrate
+
+ VOLVER A TERMINAL DE BASE DE DATO BASH 
+
+ revisar en base de datos (terminal bash)
+ \d     verificar el modelo creado en la lista
+ \d testadl_persona
+
+
+python3 manage.py shell 
+
+>>> from testadl.models import Persona
+>>> p1 = Persona(nombre='John', apellido='Doe', correo='jdoe@mail.com')
+#crea(insert) o actualiza 
+>>> p1.save()
+##>>>print(p1.id)
+
+>>> p2 = Persona(nombre='Chuck', apellido='Norris', correo='chuck@mail.com')
+>>> p2.save()
+##>>>print(p2.id)
+
+>>> exit()
+
+
+8-	python3 manage.py runserver
+crear peliculas en http://127.0.0.1:8000/admin/
+
+ctrl + c (detener ejecucion)
+
+salir de base de datos
+\q 

@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <h1>Iniciar Sesión</h1>
-    <form method="POST">
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <h2>Iniciar sesión</h2>
+    <form method="POST" action="{% url 'iniciar_sesion' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Iniciar Sesión</button>
     </form>
-</body>
-</html>
+</div>   
+{% endblock %}

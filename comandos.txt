@@ -103,3 +103,7 @@ mostrarlas peliculas creadas.
 <QuerySet [<Pelicula: (1) - (intensamente)>]>
 <QuerySet [<Pelicula: (1) - (intensamente)>]>
 [18/Jun/2024 00:53:49] "GET / HTTP/1.1" 200 18
+
+
+salir de base de datos
+\q 

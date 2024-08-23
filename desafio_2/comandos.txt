@@ -1,0 +1,196 @@
+Verificacion de Postgres(TERMINAL ZSH)
+
+creacion y activacion de entorno virtual
+
+1-	python3 -m venv vDesafio2
+2-	source vDesafio2/bin/activate
+
+ver las dependencias e instalaras las necesarias
+
+3- pip3 install Django  (5.0.6)
+
+instalar driver base de datos en nuestro entorno virtual
+4- pip3 install psycopg2     #postgres
+
+5- pip3 install --upgrade pip 
+
+creacion de Proyecto
+
+7-	Django-admin startproject desafio2
+8-	cd desafio2
+
+agregar app al proyecto
+
+9- python3 manage.py startapp desafioadl
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+10-
+    INSTALLED_APPS = [
+    ...
+    'desafioadl',
+    ...
+]
+
+
+BASE DE DATO: (TERMINAL BASH)
+
+psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+password: Admin1234
+
+CREAR BASE DE DATO
+
+CREATE DATABASE "desafio2db"; 
+
+\l    lista bases de datos creadas 
+\c desafio2db     conectarse a la base de datos 
+\q   salir de la base de datos
+
+CONFIGURAR BASE DE datos
+settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',  # o 'django.db.backends.sqlite3' si usas SQLite
+        'NAME': 'desafio2db',
+        'USER': 'postgres',
+        'PASSWORD': 'Admin1234',
+        'HOST': 'localhost',
+        'PORT': '5432',  # o dejar vacío para SQLite
+    }
+}
+
+
+DEFINIR MODELOS (TERMINAL ZSH)
+models.py
+
+from django.db import models
+
+class Tarea(models.Model):
+    descripcion = models.CharField(max_length=255)
+    estado = models.BooleanField(default=False)
+
+class SubTarea(models.Model):
+    descripcion = models.CharField(max_length=255)
+    estado = models.BooleanField(default=False)
+    tarea = models.ForeignKey(Tarea, related_name='subtareas', on_delete=models.CASCADE)
+
+5- Crear las Migraciones
+
+a-	python3 manage.py makemigrations
+b-	python3 manage.py migrate
+
+6- Implementar los Servicios
+crear en desafioadl/services.py
+
+from .models import Tarea, SubTarea
+
+def recupera_tareas_y_sub_tareas():
+    tareas = Tarea.objects.all().prefetch_related('subtareas')
+    return tareas
+
+def crear_nueva_tarea(descripcion):
+    tarea = Tarea.objects.create(descripcion=descripcion)
+    return tarea
+
+def crear_sub_tarea(tarea_id, descripcion):
+    tarea = Tarea.objects.get(id=tarea_id)
+    subtarea = SubTarea.objects.create(tarea=tarea, descripcion=descripcion)
+    return subtarea
+
+def elimina_tarea(tarea_id):
+    tarea = Tarea.objects.get(id=tarea_id)
+    tarea.delete()
+    return Tarea.objects.all()
+
+def elimina_sub_tarea(subtarea_id):
+    subtarea = SubTarea.objects.get(id=subtarea_id)
+    subtarea.delete()
+    return SubTarea.objects.all()
+
+def imprimir_en_pantalla():
+    tareas = recupera_tareas_y_sub_tareas()
+    for tarea in tareas:
+        print(f"[{tarea.id}] {tarea.descripcion}")
+        for subtarea in tarea.subtareas.all():
+            print(f".... [{subtarea.id}] {subtarea.descripcion}")
+
+OPCION 2 
+from .models import Tarea, SubTarea
+
+def recupera_tareas_y_sub_tareas():
+    tareas = Tarea.objects.all().prefetch_related('subtareas')
+    data = []
+    for tarea in tareas:
+        subtareas = list(tarea.subtareas.all())
+        data.append({'tarea': tarea, 'subtareas': subtareas})
+    return data
+
+def crear_nueva_tarea(descripcion):
+    tarea = Tarea.objects.create(descripcion=descripcion)
+    return recupera_tareas_y_sub_tareas()
+
+def crear_sub_tarea(tarea_id, descripcion):
+    tarea = Tarea.objects.get(id=tarea_id)
+    subtarea = SubTarea.objects.create(tarea=tarea, descripcion=descripcion)
+    return recupera_tareas_y_sub_tareas()
+
+def elimina_tarea(tarea_id):
+    tarea = Tarea.objects.get(id=tarea_id)
+    tarea.delete()
+    return recupera_tareas_y_sub_tareas()
+
+def elimina_sub_tarea(subtarea_id):
+    subtarea = SubTarea.objects.get(id=subtarea_id)
+    subtarea.delete()
+    return recupera_tareas_y_sub_tareas()
+
+def imprimir_en_pantalla(data):
+    for item in data:
+        tarea = item['tarea']
+        subtareas = item['subtareas']
+        print(f"[{tarea.id}] {tarea.descripcion}")
+        for subtarea in subtareas:
+            print(f".... [{subtarea.id}] {subtarea.descripcion}")            
+
+
+python manage.py shell
+
+(InteractiveConsole)
+>>> 
+from desafioadl.services import *
+
+# Crear nuevas tareas y subtareas
+resultado = crear_nueva_tarea('Descripción tarea 1')  
+print(resultado) 
+[{'tarea': <Tarea: Tarea object (1)>, 'subtareas': []}, {'tarea': <Tarea: Tarea object (2)>, 'subtareas': []}]
+
+resultado = crear_sub_tarea(1, 'Descripción sub tarea 1') 
+print(resultado)
+[{'tarea': <Tarea: Tarea object (1)>, 'subtareas': [<SubTarea: SubTarea object (1)>]}, {'tarea': <Tarea: Tarea object (2)>, 'subtareas': []}]
+
+resultado = crear_sub_tarea(1, 'Descripción sub tarea 2')
+print(resultado)
+[{'tarea': <Tarea: Tarea object (1)>, 'subtareas': [<SubTarea: SubTarea object (1)>, <SubTarea: SubTarea object (2)>]}, {'tarea': <Tarea: Tarea object (2)>, 'subtareas': []}]
+
+resultado = crear_nueva_tarea('Descripción tarea 2')
+print(resultado)
+[{'tarea': <Tarea: Tarea object (1)>, 'subtareas': [<SubTarea: SubTarea object (1)>, <SubTarea: SubTarea object (2)>]}, {'tarea': <Tarea: Tarea object (2)>, 'subtareas': []}, {'tarea': <Tarea: Tarea object (3)>, 'subtareas': []}]
+
+resultado = crear_sub_tarea(2, 'Descripción sub tarea 3')
+print(resultado)
+[{'tarea': <Tarea: Tarea object (1)>, 'subtareas': [<SubTarea: SubTarea object (1)>, <SubTarea: SubTarea object (2)>]}, {'tarea': <Tarea: Tarea object (2)>, 'subtareas': [<SubTarea: SubTarea object (3)>]}, {'tarea': <Tarea: Tarea object (3)>, 'subtareas': []}]
+
+resultado = crear_sub_tarea(2, 'Descripción sub tarea 4')
+print(resultado)
+[{'tarea': <Tarea: Tarea object (1)>, 'subtareas': [<SubTarea: SubTarea object (1)>, <SubTarea: SubTarea object (2)>]}, {'tarea': <Tarea: Tarea object (2)>, 'subtareas': [<SubTarea: SubTarea object (3)>, <SubTarea: SubTarea object (4)>]}, {'tarea': <Tarea: Tarea object (3)>, 'subtareas': []}]
+
+data = recupera_tareas_y_sub_tareas()
+imprimir_en_pantalla(data)
+
+Salir de la shell 
+exit()
+
+pip freeze > requirements.txt
+
+zip -r proyecto-desafio2-Lolett-Llanquinao.zip desafio2

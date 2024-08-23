@@ -2,24 +2,61 @@ Verificacion de Postgres(TERMINAL ZSH)
 
 creacion y activacion de entorno virtual
 
-1-	python3 -m venv vDesafioguiado
-2-	source vDesafioguiado/bin/activate
+1-	python3 -m venv vnombre_del_entorno
+2-	source vnombre_del_entorno/bin/activate
 
 ver las dependencias e instalaras las necesarias
 
 3- pip3 install Django  (5.0.6)
 
-instalar driver base de datos en nuestro entorno virtual
+instalar driver base de datos en nuestro entorno virtual para usar postgres
 4- pip3 install psycopg2     #postgres
 
 5- pip3 install --upgrade pip 
 
-6- Pip3 freeze > requirements– vDesafioguiado.txt
 
 creacion de Proyecto
 
-7-	Django-admin startproject desafiodb
-8-	cd desafiodb
+7-	Django-admin startproject nombre_proyecto
+8-	cd nombre_proyecto
+
+agregar app al proyecto
+
+3- python3 manage.py startapp nombre_app
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+4-
+    INSTALLED_APPS = [
+    ...
+    'nombre_app',
+    ...
+]
+
+TEMPLATES
+
+
+DEFINIR MODELOS 
+models.py
+
+
+from django.db import models
+
+class Tarea(models.Model):
+    descripcion = models.CharField(max_length=255)
+    estado = models.BooleanField(default=False)
+
+class SubTarea(models.Model):
+    descripcion = models.CharField(max_length=255)
+    estado = models.BooleanField(default=False)
+    tarea = models.ForeignKey(Tarea, related_name='subtareas', on_delete=models.CASCADE)
+
+
+ADMIN 
+agregar al admin.py  (crear superusuario)
+from .models import Pelicula
+admin.site.register(Pelicula)"""
+
 
 BASE DE DATO: (TERMINAL BASH)
 
@@ -28,15 +65,9 @@ password: Admin1234
 
 CREAR BASE DE DATO
 
-CREATE DATABASE "adl-test";  (NO FUNCIONO SIN COMILLAS)
-
-\l    lista bases de datos creadas 
-\c adl-test     conectarse a la base de datos 
-\q   salir de la base de datos
-
+CREATE DATABASE "nombre_base_datos";  
 
 CREAR TABLA
-
 CREATE TABLE adltest (
     campo1 CHAR(100),
     valor1 INTEGER
@@ -44,63 +75,59 @@ CREATE TABLE adltest (
 
 \d adltest
 
+\l    lista bases de datos creadas 
+\c nombre_base_datos     conectarse a la base de datos 
+\q   salir de la base de datos
 
-"""
-Vincular en "settings.py"
 
+CONFIGURAR BASE DE datos
+settings.py
+
+(cuando es postgres)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'adl-test',
+        'NAME': 'nombre_base_dato',
         'USER': 'postgres',
         'PASSWORD': 'Admin1234',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5432',  # o dejar vacío para SQLite
     }
 }
-"""
 
-NUEVAMENTE EN TERMINAL ZSH
-
-agregar app al proyecto
-
-3- python3 manage.py startapp testdb
-
-vincular app al proyecto (setting.py) con el nombre de la app
-
-4-
-    INSTALLED_APPS = [
-    ...
-    'testdb',
-    ...
-]
-
-"""luego de agregar el modelo en models.py"""
-class AdlTest(models.Model):
-    campo1 = models.CharField(max_length=100) 
-    valor1 = models.IntegerField()
-
-    def __str__(self):  #sobre escritura
-        return f"{self.campo1} - {self.valor1}" 
+(cuando es sqlite)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR /'nombre_proyecto.sqlite3',
+    }
+}
 
 
-"""5- agregar al admin.py 
-from .models import Pelicula
-admin.site.register(Pelicula)"""
-
-
+CREAR LAS MIGRACIONES
 	
 6-	python3 manage.py makemigrations
 7-	python3 manage.py migrate
 
- VOLVER A TERMINAL DE BASE DE DATO BASH 
+VOLVER AL TERMINAL DE BASE DE DATO BASH 
 
  revisar en base de datos (terminal bash)
  \d     verificar el modelo creado en la lista
  \d 
-
-
-ctrl + c (detener ejecucion)
-
 salir de base de datos
 \q 
+
+
+python manage.py shell
+
+(InteractiveConsole)
+>>> 
+
+
+Salir de la shell 
+exit()
+
+6- Pip3 freeze > requirements–vnombre_del_entorno.txt
+
+zip -r proyecto-desafio2-Lolett-Llanquinao.zip desafio2
+

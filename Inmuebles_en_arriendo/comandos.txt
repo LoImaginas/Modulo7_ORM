@@ -22,7 +22,7 @@ creacion de Proyecto
 
 agregar app al proyecto
 
-3- python3 manage.py startapp Arriendos_app
+9- python3 manage.py startapp Arriendos_app
 
 vincular app al proyecto (setting.py) con el nombre de la app
 
@@ -37,12 +37,12 @@ vincular app al proyecto (setting.py) con el nombre de la app
 
 BASE DE DATO: (TERMINAL BASH)
 
-psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+10- psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
 password: Admin1234
 
 CREAR BASE DE DATO
 
-CREATE DATABASE "inmuebles_en_arriendo";  
+11- CREATE DATABASE "inmuebles_en_arriendo";  
 
 """CREAR TABLA
 CREATE TABLE adltest (
@@ -53,14 +53,15 @@ CREATE TABLE adltest (
 \d adltest"""""
 
 \l    lista bases de datos creadas 
-\c inmuebles_en_arriendo     conectarse a la base de datos 
+12- \c inmuebles_en_arriendo     conectarse a la base de datos Admin1234
+
 \q   salir de la base de datos
 
 
 CONFIGURAR BASE DE datos
 settings.py
 
-(cuando es postgres)
+13- (cuando es postgres)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -291,4 +292,12 @@ git push -u origin main
 
 git add proyecto-inmuebles_en_arriendo2-Lolett-Llanquinao.zip
 git commit -m "Agregar archivo ZIP hito 2 del proyecto"
+git push -u origin main
+
+git add proyecto-inmuebles_en_arriendo3-Lolett-Llanquinao.zip
+git commit -m "Agregar archivo ZIP hito 3 del proyecto"
+git push -u origin main
+
+git add proyecto-inmuebles_en_arriendo4-Lolett-Llanquinao.zip
+git commit -m "Agregar archivo ZIP hito 4 del proyecto"
 git push -u origin main

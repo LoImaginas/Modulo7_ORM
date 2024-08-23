@@ -1,5 +1,24 @@
-.button-container {
-    margin-top: 20px;
+/* Color de fondo de toda la página */
+body {  
+    background-color: #a1a3a6 !important; /* Color de fondo deseado */
+    font-family: "raleway", sans-serif;
+    
+}
+
+/* Color de fondo del contenedor principal si es necesario */
+.container {
+    background-color: #a1a3a6; /* Color de fondo del contenedor si lo necesitas */
+}
+
+/* Página de inicio */
+.inicio-content {
+    padding: 50px 15px;
+    background-color: #a1a3a6; /* Color de fondo claro */
+}
+
+.welcome-section {
+    margin-top: 30px;
+    text-align: center;
 }
 
 .btn {
@@ -11,12 +30,178 @@
     color: #fff;
     font-weight: bold;
     text-align: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #040405;
+}
+
+.btn-primary:hover {
+    background-color: #a1a3a6;
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #040405;
+}
+
+.btn-secondary:hover {
+    background-color: #a1a3a6;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/* Tamaño del logo */
+header .logo {
+    max-height: 250px; /* Ajusta el tamaño del logo como necesites */
+    width: auto; /* Mantiene la relación de aspecto */
+    display: block; /* Asegura que la imagen no tenga márgenes extra */
+    margin: 0 auto; /* Centra la imagen en su contenedor */
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        max-height: 40px; /* Tamaño del logo en pantallas más pequeñas */
+    }
+
+    .btn {
+        padding: 8px 16px; /* Tamaño del botón en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand img {
+        max-height: 30px; /* Tamaño del logo en pantallas aún más pequeñas */
+    }
+
+    .btn {
+        padding: 6px 12px; /* Tamaño del botón en pantallas aún más pequeñas */
+    }
+}
+
+/* Estilos de texto */
+.display-4 {
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.display-5 {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* Header */
+header {
+    background-color: transparent; /* Color de fondo claro para el header */
+    padding: 10px 0; /* Espaciado en el header */
+}
+
+.navbar-brand img {
+    max-height: 120px; /* Tamaño máximo del logo */
+    width: auto; /* Mantiene la relación de aspecto */
+    display: block; /* Asegura que la imagen no tenga márgenes extra */
+    margin: 0 auto; /* Centra la imagen en su contenedor */
+}
+
+/* Estilos adicionales */
+.navbar {
+    padding: 0; /* Asegúrate de que el padding del navbar sea cero */
+    background-color: transparent; /* Fondo transparente para el navbar */
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    header .logo {
+        max-height: 40px; /* Tamaño del logo en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo {
+        max-height: 30px; /* Tamaño del logo en pantallas aún más pequeñas */
+    }
+}
+
+
+/* Estilos del panel de autenticación */
+.auth-form {
+    background-color: #ffffff; /* Fondo blanco para el panel */
+    padding: 20px; /* Espaciado dentro del panel */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Asegura que el panel se alinee bien */
+.navbar .row {
+    display: flex;
+    align-items: stretch; /* Estira las columnas para que ocupen todo el espacio disponible */
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .auth-form {
+        width: 100%; /* Asegura que el panel use todo el ancho en pantallas más pequeñas */
+    }
+}
+
+/* Estilo para el carrusel */
+
+.carousel {
+    position: relative; /* Necesario para que el contenido absoluto esté posicionado correctamente */
+    width: 100%;
+    height: 60vh; /* Ajusta la altura según sea necesario */
+    overflow: hidden; /* Asegura que no haya desbordamiento de las imágenes */
+}
+
+.carousel-inner {
+    height: 100%; /* Asegura que el contenido interno ocupe toda la altura del contenedor */
+}
+
+.carousel-item {
+    height: 100%; /* Asegura que el item ocupe toda la altura del contenedor */
+    position: relative; /* Necesario para el ajuste de la posición */
+}
+
+.carousel-item img {
+    object-fit: cover; /* Asegura que la imagen se ajuste sin deformarse */
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: 100%; /* Ajusta la altura al 100% del contenedor */
+    position: absolute; /* Asegura que la imagen esté en la misma capa que el contenido */
+    top: 0;
+    left: 0;
+}
+
+/* Ajusta la posición del texto y botón en el carrusel */
+.carousel-caption {
+    position: absolute;
+    bottom: 20px; /* Ajusta la posición del texto y botón desde el fondo del carrusel */
+    left: 50%;
+    transform: translateX(-50%); /* Centra el contenido horizontalmente */
+    z-index: 10; /* Asegura que el contenido esté sobre la imagen */
+    color: #fff; /* Asegura que el texto sea visible sobre la imagen */
+}
+
+.carousel-caption .btn {
+    z-index: 10; /* Asegura que el botón esté sobre la imagen */
+    margin-top: 10px;
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    font-size: 18px; /* Tamaño del texto del botón */
+    background-color: rgba(2, 2, 2, 0.694); /* Ajusta el color del botón con transparencia si es necesario */
+    border: none; /* Elimina el borde del botón */
+}
+
+/* Opcional: Ajusta el tamaño del botón en pantallas más pequeñas */
+@media (max-width: 768px) {
+    .carousel-caption .btn {
+        font-size: 14px; /* Tamaño del texto del botón */
+        padding: 8px 16px; /* Ajusta el tamaño del botón */
+    }
 }

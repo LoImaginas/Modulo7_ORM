@@ -1,26 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
     <h1>Bienvenido, {{ user.username }}!</h1>
     <p>Tipo de usuario: {{ user_type }}</p>
 
     {% if user_type == 'Arrendador' %}
         <a href="{% url 'crear_inmueble' %}" class="btn btn-primary">Crear Inmueble</a>
         <a href="{% url 'mis_inmuebles' %}" class="btn btn-secondary">Mis Inmuebles</a>
+        <a href="{% url 'editar_inmueble' %}" class="btn btn-secondary">Editar Inmuebles</a>
+        <a href="{% url 'eliminar_inmueble' %}" class="btn btn-warning">Eliminar Inmueble</a>
     {% elif user_type == 'Arrendatario' %}
-        <a href="{% url 'buscar_inmuebles' %}" class="btn btn-primary">Buscar Inmuebles</a>
+        <a href="{% url 'lista_inmuebles' %}" class="btn btn-primary">Buscar Inmuebles</a>
+        <a href="{% url 'editar_perfil' %}" class="btn btn-secondary">Editar Perfil</a>
+        <a href="{% url 'enviar_mensaje' %}" class="btn btn-info">Enviar Mensaje</a>
     {% else %}
         <p>Tipo de usuario desconocido.</p>
     {% endif %}
 
-    <a href="{% url 'editar_perfil' %}" class="btn btn-secondary">Editar Perfil</a>
     <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar Sesión</a>
-</body>
-</html>
+{% endblock %}

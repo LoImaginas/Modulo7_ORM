@@ -1,34 +1,57 @@
-from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
+from django import forms 
+from django.contrib.auth.forms import User
 from .models import Usuario, Inmueble
+from django.contrib.auth import authenticate
 
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(max_length=254, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
+class LoginForm(forms.Form):
+    email = forms.EmailField(max_length=254, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
 
-class RegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
-    first_name = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
-    last_name = forms.CharField(max_length=30, required=False, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}))
+    def get_user(self):
+        email = self.cleaned_data.get('email')
+        return authenticate(email=email, password=self.cleaned_data.get('password'))
+
+class RegisterForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, label='Password')
+    password_confirm = forms.CharField(widget=forms.PasswordInput, label='Confirm Password')
 
     class Meta:
-        model = User
-        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
+        model = Usuario
+        fields = ['nombres', 'apellidos', 'rut', 'direccion', 'telefono_personal', 'email', 'tipo_usuario']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
-            'password1': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}),
-            'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm Password'}),
+            'nombres': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido'}),
+            'rut': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'RUT'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Dirección'}),
+            'telefono_personal': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'tipo_usuario': forms.Select(attrs={'class': 'form-control'}),
         }
 
+    def clean_password_confirm(self):
+        password = self.cleaned_data.get('password')
+        password_confirm = self.cleaned_data.get('password_confirm')
+        if password and password_confirm and password != password_confirm:
+            raise forms.ValidationError("Las contraseñas no coinciden.")
+        return password_confirm
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user
+    
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        model = Usuario
+        fields = ['nombres', 'apellidos', 'email', 'direccion', 'telefono_personal']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}),
+            'nombres': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombres'}),
+            'apellidos': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellidos'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Dirección'}),
+            'telefono_personal': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Teléfono'}),
         }
 
 class InmuebleForm(forms.ModelForm):
@@ -60,4 +83,6 @@ class InmuebleForm(forms.ModelForm):
             'tipo_inmueble': forms.Select(attrs={'class': 'form-control'}),
             'precio_arriendo': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Precio Arriendo'}),
         }
-        
+   
+class ContactoForm(forms.Form):
+    mensaje = forms.CharField(widget=forms.Textarea, max_length=1000)

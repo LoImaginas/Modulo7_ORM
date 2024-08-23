@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-</head>
-<body>
-    <h1>Bienvenidos a Inmuebles en Arriendo</h1>
-    <p>Esta es la pagina de inicio.</p>
+{% extends 'base.html' %}
+{% load static %}
 
-    <div class="button-container">
-        <a href="{% url 'iniciar_sesion' %}" class="btn btn-primary">Iniciar Sesión</a>
-        <a href="{% url 'registrar' %}" class="btn btn-secondary">Registrarse</a>
+{% block content %}
+<div class="inicio-content text-center">
+    <h1 class="display-4">Bienvenidos a Inmuebles en Arriendo</h1>
+    <p class="lead">Encuentra la propiedad perfecta para ti.</p>
+
+    <!-- Sección principal -->
+    <div class="welcome-section">
+        <h2 class="display-5">Inmuebles en Arriendo</h2>
+        <p class="lead">La mejor selección de propiedades al alcance de tu mano.</p>
+        <a href="{% url 'lista_inmuebles' %}" class="btn btn-primary btn-lg">Ver Inmuebles</a>
     </div>
 
-</body>
-</html>
+    <!-- Sección de botones -->
+    <div class="button-container mt-4">
+        <a href="{% url 'iniciar_sesion' %}" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+        <a href="{% url 'registrar' %}" class="btn btn-secondary btn-lg">Registrarse</a>
+    </div>
+</div>
+{% endblock %}

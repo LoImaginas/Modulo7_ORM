@@ -1,0 +1,254 @@
+Verificacion de Postgres(TERMINAL ZSH)
+
+creacion y activacion de entorno virtual
+
+1-	python3 -m venv vVehiculos_empresa
+2-	source vVehiculos_empresa/bin/activate
+
+ver las dependencias e instalaras las necesarias
+
+3- pip3 install Django  (5.0.6)
+
+instalar driver base de datos en nuestro entorno virtual para usar postgres
+4- pip3 install psycopg2     #postgres
+
+5- pip3 install --upgrade pip 
+
+
+creacion de Proyecto
+
+7-	Django-admin startproject vehiculos_empresa
+8-	cd vehiculos_empresa
+
+agregar app al proyecto
+
+3- python3 manage.py startapp registro_vehiculos
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+4-
+    INSTALLED_APPS = [
+    ...
+    'registro_vehiculos',
+    ...
+]
+
+BASE DE DATO: (TERMINAL BASH)
+
+psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+password: Admin1234
+
+CREAR BASE DE DATO
+
+CREATE DATABASE "vehiculos_empresa";  
+
+"""CREAR TABLA
+CREATE TABLE vehiculos_empresa (
+    campo1 CHAR(100),
+    valor1 INTEGER
+);
+
+\d vehiculos_empresa
+\l    lista bases de datos creadas 
+\c vehiculos_empresa     conectarse a la base de datos 
+\q   salir de la base de datos""""
+
+
+NUEVAMENTE EN (TERMINAL ZSH) 
+
+CONFIGURAR BASE DE datos
+settings.py
+
+(cuando es postgres)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vehiculos_empresa',
+        'USER': 'postgres',
+        'PASSWORD': 'Admin1234',
+        'HOST': 'localhost',
+        'PORT': '5432',  # o dejar vacío para SQLite
+    }
+}
+
+(cuando es sqlite)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR /'nombre_proyecto.sqlite3',
+    }
+}
+
+
+
+
+TEMPLATES
+
+
+DEFINIR MODELOS 
+models.py
+
+
+from django.db import models
+
+class Vehiculo(models.Model):
+    patente = models.CharField(max_length=6, primary_key=True)
+    marca = models.CharField(max_length=20, null=False, blank=False)
+    modelo = models.CharField(max_length=20, null=False, blank=False)
+    year = models.DateField(null=False)
+
+    def __str__(self):
+        return self.patente
+
+class Chofer(models.Model):
+    nombre = models.CharField(max_length=50, null=False, blank=False)
+    apellido = models.CharField(max_length=50, null=False, blank=False)
+    activo = models.BooleanField(default=False)
+    creacion_registro = models.DateField
+    vehiculo = models.OneToOneField(Vehiculo, max_length=6, unique=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'({self.rut})-{self.nombre} {self.apellido}'
+
+class RegistroContabilidad(models.Model):
+    fecha_compra = models.DateField(null=False)
+    valor = models.floatField(null=False)
+    vehiculo = models.OneToOneField(Vehiculo,max_length=6, null=False, unique=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Registro de compra de {self.vehiculo.patente}'
+
+
+CREAR EL ARCHIVO "SERVICES.PY"
+
+from .models import Vehiculo, Chofer, RegistroContabilidad
+
+def crear_vehiculo(patente, marca, modelo, year):
+    vehiculo = Vehiculo(patente=patente, marca=marca, modelo=modelo, year=year)
+    vehiculo.save()
+    return vehiculo
+
+def crear_chofer(rut, nombre, apellido, vehiculo):
+    chofer = Chofer(rut=rut, nombre=nombre, apellido=apellido, vehiculo=vehiculo)
+    chofer.save()
+    return chofer
+
+def crear_registro_contable(fecha_compra, valor, vehiculo):
+    registro = RegistroContabilidad(fecha_compra=fecha_compra, valor=valor, vehiculo=vehiculo)
+    registro.save()
+    return registro
+
+def deshabilitar_chofer(rut):
+    chofer = Chofer.objects.get(rut=rut)
+    chofer.activo = False
+    chofer.save()
+
+def habilitar_chofer(rut):
+    chofer = Chofer.objects.get(rut=rut)
+    chofer.activo = True
+    chofer.save()
+
+def deshabilitar_vehiculo(patente):
+    vehiculo = Vehiculo.objects.get(patente=patente)
+    vehiculo.activo = False
+    vehiculo.save()
+
+def habilitar_vehiculo(patente):
+    vehiculo = Vehiculo.objects.get(patente=patente)
+    vehiculo.activo = True
+    vehiculo.save()
+
+def obtener_vehiculo(patente):
+    return Vehiculo.objects.get(patente=patente)
+
+def obtener_chofer(rut):
+    return Chofer.objects.get(rut=rut)
+
+def asignar_chofer_a_vehiculo(rut, patente):
+    chofer = Chofer.objects.get(rut=rut)
+    vehiculo = Vehiculo.objects.get(patente=patente)
+    chofer.vehiculo = vehiculo
+    chofer.save()
+
+def imprimir_datos_vehiculos():
+    vehiculos = Vehiculo.objects.all()
+    for vehiculo in vehiculos:
+        print(f"Patente: {vehiculo.patente}, Marca: {vehiculo.marca}, Modelo: {vehiculo.modelo}, Año: {vehiculo.year}")
+
+
+
+APLICAR LAS MIGRACIONES
+	
+6-	python3 manage.py makemigrations
+7-	python3 manage.py migrate
+
+"""ADMIN 
+agregar al admin.py  (crear superusuario)
+
+python manage.py createsuperuser
+
+
+from django.contrib import admin
+from .models import Vehiculo, Chofer, RegistroContabilidad
+
+admin.site.register(Vehiculo)
+admin.site.register(Chofer)
+admin.site.register(RegistroContabilidad)   """"
+
+python manage.py runserver
+Ctrl + c  = detener 
+
+
+VOLVER AL TERMINAL DE BASE DE DATO BASH 
+
+ revisar en base de datos (terminal bash)
+ \d     verificar el modelo creado en la lista
+ \d 
+salir de base de datos
+\q 
+
+
+python manage.py shell
+probar servicios
+
+
+(InteractiveConsole)
+>>> 
+
+from registro_vehiculos.services import *
+from registro_vehiculos.services import crear_vehiculo
+# Crear un vehículo
+>>> crear_vehiculo("XBT452", "Susuki", "Jimny", 2020)
+
+# Crear un chofer
+>>> crear_chofer("16856978-1", "Juan", "Perez", obtener_vehiculo("XBT452"))
+
+# Crear un registro contable
+crear_registro_contable("2023-07-01", 15000.00, obtener_vehiculo("XBT452"))
+
+# Habilitar/deshabilitar chofer
+deshabilitar_chofer("16856978-1")
+habilitar_chofer("16856978-1")
+
+# Habilitar/deshabilitar vehículo
+deshabilitar_vehiculo("XBT452")
+habilitar_vehiculo("XBT452")
+
+# Obtener vehículo y chofer
+print(obtener_vehiculo("XBT452"))
+print(obtener_chofer("16856978-1"))
+
+# Asignar chofer a vehículo
+asignar_chofer_a_vehiculo("16856978-1", "XBT452")
+
+# Imprimir datos de vehículos
+imprimir_datos_vehiculos()
+
+
+
+Salir de la shell 
+exit()
+
+6- Pip3 freeze > requirements.txt
+
+zip -r desafio3-Lolett-Llanquinao.zip vehiculos_empresa

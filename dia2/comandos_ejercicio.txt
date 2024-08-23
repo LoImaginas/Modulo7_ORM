@@ -1,0 +1,115 @@
+Verificacion de Postgres(TERMINAL ZSH)
+
+psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+password: Admin1234
+
+creacion y activacion de entorno virtual
+
+1-	python3 -m venv vCrud
+2-	source vCrud/bin/activate
+
+ver las dependencias e instalaras las necesarias
+3- pip3 list 
+
+PASO 1 : 
+4- pip3 install Django  (5.0.6)
+
+instalar driver base de datos en nuestro entorno virtual
+5- pip3 install psycopg2     #postgres
+
+
+creacion de Proyecto
+
+1-	Django-admin Crud
+2-	Cd Crud
+
+PASO 2 :
+BASE DE DATO: (TERMINAL BASH)
+
+CREAR BASE DE DATO
+
+1- CREATE DATABASE Crud;
+
+    \l    lista bases de datos creadas 
+2- \c Crud      conectarse a la base de datos 
+    \q   salir de la base de datos
+
+3- Vincular en "settings.py"
+
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.postgresql',
+'NAME': 'Crud',
+'USER': 'postgres',
+'PASSWORD': 'Admin1234',
+'HOST': '127.0.0.1',
+'PORT': '5432',
+}
+}
+
+
+NUEVAMENTE EN TERMINAL ZSH
+
+PASO 3: 
+agregar app al proyecto
+
+1- python3 manage.py startapp gestion_tareas
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+2-
+    INSTALLED_APPS = [
+    ...
+    'gestion_tareas',
+    ...
+]
+
+luego de agregar el modelo en models.py
+
+Definir el modelo Tarea en gestion_tareas/models.py
+
+3- 
+from django.db import models
+
+class Tarea(models.Model):
+titulo = models.CharField(max_length=200)
+descripcion = models.TextField()
+fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+def __str__(self):
+    return self.titulo
+
+PASO 4:	
+4-	python3 manage.py makemigrations
+5-	python3 manage.py migrate
+
+PASO 5: 
+Implementación de Vistas CRUD
+Crear vistas en “gestion_tareas/views.py” para listar, agregar, editar y eliminar tareas
+Listar tareas:
+
+from django.shortcuts import render
+from .models import Tarea
+def lista_tareas(request):
+    tareas = Tarea.objects.all()
+        return render(request, 'gestion_tareas/lista_tareas.html',
+{'tareas': tareas})
+ 
+
+ agregar Tareas:
+
+from django.shortcuts import redirect, render
+from .forms import TareaForm
+def nueva_tarea(request):
+    if request.method == "POST":
+        form = TareaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_tareas')
+    else:
+        form = TareaForm()
+    return render(request, 'gestion_tareas/editar_tarea.html', {'form':form})
+
+
+Editar y Eliminar Tarea: Similar a agregar, utilizando get_object_or_404 para editar y delete
+para eliminar.

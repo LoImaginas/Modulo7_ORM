@@ -1,0 +1,128 @@
+Verificacion de Postgres(TERMINAL ZSH)
+
+psql -U postgres =  /Library/PostgreSQL/16/scripts/runpsql.sh 
+password: Admin1234
+
+creacion y activacion de entorno virtual
+
+1-	python3 -m venv vdemololett
+2-	source vdemololett/bin/activate
+
+ver las dependencias e instalaras las necesarias
+3- pip3 list 
+4- pip3 install Django  (5.0.6)
+
+instalar driver base de datos en nuestro entorno virtual
+5- pip3 install psycopg2     #postgres
+
+"""6- pip3 install --upgrade pip 
+   7- pip3 list 
+   8- python3 - version   (salir con ctrl + d) (version3.12.2) """
+
+9- Pip3 freeze > requirements– vSistema_base.txt
+
+creacion de Proyecto
+
+1-	Django-admin startproject sistema_base
+2-	Cd sistema_base
+
+BASE DE DATO: (TERMINAL BASH)
+
+CREAR BASE DE DATO
+
+CREATE DATABASE sistema_base;
+\l    lista bases de datos creadas 
+\c sistema_base      conectarse a la base de datos 
+\q   salir de la base de datos
+
+Vincular en "settings.py"
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.postgresql',
+'NAME': 'sistema_base',
+'USER': 'postgres',
+'PASSWORD': 'Admin1234',
+'HOST': '127.0.0.1',
+'PORT': '5432',
+}
+}
+
+NUEVAMENTE EN TERMINAL ZSH
+
+agregar app al proyecto
+
+3- python3 manage.py startapp testadl
+
+vincular app al proyecto (setting.py) con el nombre de la app
+
+4-
+    INSTALLED_APPS = [
+    ...
+    'testadl',
+    ...
+]
+
+luego de agregar el modelo en models.py
+
+5- agregar al admin.py 
+
+from .models import Pelicula
+admin.site.register(Pelicula)
+
+
+	
+6-	python3 manage.py makemigrations
+7-	python3 manage.py migrate
+
+ 
+ revisar en base de datos (terminal bash)
+ \d     verificar el modelo creado en la lista
+
+
+CREAR SUPER USUARIO 
+python3 manage.py createsuperuser
+Username (leave blank to use 'crisylolett'): LolettP   
+Email address: lmarialolett@yahoo.es
+Password: Admin1234
+Password (again): Admin1234
+Superuser created successfully.
+
+
+8-	python3 manage.py runserver
+crear peliculas en http://127.0.0.1:8000/admin/
+
+ctrl + c (detener ejecucion)
+
+ devuelve:
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+al hacer enter en http://127.0.0.1:8000 la consola deberia
+mostrarlas peliculas creadas.
+
+<QuerySet [<Pelicula: (1) - (intensamente)>]>
+<QuerySet [<Pelicula: (1) - (intensamente)>]>
+[18/Jun/2024 00:53:49] "GET / HTTP/1.1" 200 18
+
+
+salir de base de datos
+\q 
+
+
+
+CRUD
+***** SELECT****
+Resultado= Entry.objects.all()-> select * from entry;
+r1 = Entry.objects.filter(title=valor) # SELECT * FROM Entry WHERE title=’valor’
+r2 = Entry.objects.filter(title=valor).first() # SELECT * FROM Entry WHERE title=’valor’ LIMIT 1
+r3 = Entry.objects.get(id=valor) #SELECT * FROM Entry where id = valor
+r4 = Entry.objects.order_by('blog').distinct('blog') # SELECT distinct blog from Entry order by blog
+
+**** UPDATE **** 
+e1 = Entry.objects.get(id=100) # obtenemos el registro con id 100
+e1.title = "Nuevo título" # Actualizamos el título existente.
+e1.save() # se guarda el registro con los cambios realizados.
+#SQL: UPDATE Entry set title=’Nuevo Titulo’ WHERE id=100
+
+
+python3 manage.py shell

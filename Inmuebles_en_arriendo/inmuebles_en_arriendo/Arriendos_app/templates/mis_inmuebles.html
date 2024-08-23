@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Mis Inmuebles</h1>
+    <ul>
+        {% for inmueble in inmuebles %}
+            <li>{{ inmueble.nombre }} - {{ inmueble.direccion }}</li>
+            <!-- Mostrar consultas si hay -->
+            <ul>
+                {% for consulta in consultas %}
+                    <li>{{ consulta.remitente.username }}: {{ consulta.mensaje }}</li>
+                {% empty %}
+                    <li>No hay consultas aún.</li>
+                {% endfor %}
+            </ul>
+        {% empty %}
+            <p>No tienes inmuebles.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
